@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
         characterMovement = new CharacterMovement(GetComponent<Rigidbody2D>());
         characterMovement.Param = new CharacterMovement.MovementParameter(3.0f, 10.0f);
         input = CharacterMovement.MovementInput.none;
-        groundChecker = new GroundChecker();
+        groundChecker = GetComponent<GroundChecker>();
     }
 
     private void Update()
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         ApplyMovment();
+        input.jump = false;
     }
 
     private void ApplyMovment()
@@ -32,8 +33,9 @@ public class PlayerController : MonoBehaviour
         if(!input.EnableInput) { return; }
 
         characterMovement.Move(input.direction);
-        characterMovement.Jump(input.jump);
-
-        input.jump = false;
+        if (groundChecker.IsGround)
+        {
+            characterMovement.Jump(input.jump);
+        }
     }
 }
