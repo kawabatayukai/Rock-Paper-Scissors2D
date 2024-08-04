@@ -81,4 +81,17 @@ public class CharacterMovement
 
         rigidbody.AddForce(Vector2.up * param.jumpForce, ForceMode2D.Impulse);
     }
+
+    public Vector3 GetLocalScaleToUpdateDirection(Vector2 direction)
+    {
+        if(direction.x < 0)
+        {
+            return new Vector3(-1, 1, 1);
+        }
+        if (direction.x > 0)
+        {
+            return new Vector3(1, 1, 1);
+        }
+        return new Vector3(1, 1, 1);
+    }
 }

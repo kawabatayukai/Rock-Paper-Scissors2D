@@ -20,14 +20,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) { input.direction = Vector2.left; }
         if (Input.GetKey(KeyCode.D)) { input.direction = Vector2.right; }
         if (Input.GetKeyDown(KeyCode.Space)) { input.jump = true; }
+        
     }
 
     private void FixedUpdate()
     {
         ApplyMovment();
+        ApplyDirection();
         input.jump = false;
     }
 
+    // 移動を適用
     private void ApplyMovment()
     {
         if(!input.EnableInput) { return; }
@@ -37,5 +40,12 @@ public class PlayerController : MonoBehaviour
         {
             characterMovement.Jump(input.jump);
         }
+    }
+
+    // 進行方向を向く
+    private void ApplyDirection()
+    {
+        if(input.direction == Vector2.zero) { return; }
+        transform.localScale = characterMovement.GetLocalScaleToUpdateDirection(input.direction);
     }
 }
