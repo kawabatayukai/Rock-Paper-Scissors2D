@@ -40,7 +40,7 @@ public class CharacterMovement
         }
     }
 
-    MovementParameter param = new MovementParameter(10.0f, 15.0f);
+    MovementParameter param = new MovementParameter(3.0f, 10.0f);
     Rigidbody2D rigidbody;
     
     public MovementParameter Param
