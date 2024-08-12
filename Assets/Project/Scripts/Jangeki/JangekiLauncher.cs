@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using JangekiParameter;
 
 // プールもっちゃえ
 // パラメータ設定もやっちゃえ
@@ -7,7 +8,7 @@ public class JangekiLauncher : MonoBehaviour
 {
     [SerializeField] JangekiSpriteManager spriteManager;
     [SerializeField] JangekiPool jangekiPool;
-    [SerializeField] Transform launchPosition;
+    [SerializeField] InitializeParameter initializeParameter;
 
 
     private void Start()
@@ -19,7 +20,7 @@ public class JangekiLauncher : MonoBehaviour
     {
         Jangeki jangeki = jangekiPool.Get();
         jangeki.SetSprite(spriteManager.Get(type));
-        jangeki.gameObject.transform.position = launchPosition.position;
+        jangeki.gameObject.transform.position = initializeParameter.launchPosition.position;
         return jangeki;
     }
 }

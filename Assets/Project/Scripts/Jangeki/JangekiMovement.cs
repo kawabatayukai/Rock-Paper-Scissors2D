@@ -4,21 +4,21 @@
 
 public class JangekiMovement
 {
-    public class MovementParameter
-    {
-        public float speed;
-        public Vector2 direction;
+    //public class MovementParameter
+    //{
+    //    public float speed;
+    //    public Vector2 direction;
 
-        public Vector2 GetDirection(float radiansAngle)
-        {
-            return new Vector2(Mathf.Cos(radiansAngle), Mathf.Sin(radiansAngle));
-        }
-    }
+    //    public Vector2 GetDirection(float radiansAngle)
+    //    {
+    //        return new Vector2(Mathf.Cos(radiansAngle), Mathf.Sin(radiansAngle));
+    //    }
+    //}
 
-    MovementParameter param;
+    JangekiParameter.MovementParameter param;
     Rigidbody2D rigidbody;
 
-    public MovementParameter Param
+    public JangekiParameter.MovementParameter Param
     {
         get { return param; }
         set { param = value; }

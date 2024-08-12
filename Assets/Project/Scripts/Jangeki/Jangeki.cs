@@ -15,7 +15,7 @@ public class Jangeki : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     protected JangekiMovement jangekiMovement;
 
-    public JangekiMovement.MovementParameter Param { get {  return jangekiMovement.Param; } set { jangekiMovement.Param = value; } }
+    public JangekiParameter.MovementParameter Param { get {  return jangekiMovement.Param; } set { jangekiMovement.Param = value; } }
 
     protected virtual void Awake()
     {

@@ -19,9 +19,9 @@ public class PlayerController : Character
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Jangeki jangeki = jangekiLauncher.Launch(Jangeki.Type.Rock);
-            JangekiMovement.MovementParameter param = new JangekiMovement.MovementParameter();
+            JangekiParameter.MovementParameter param = new JangekiParameter.MovementParameter();
             param.speed = 50.0f;
-            param.direction = transform.right;
+            param.direction = transform.right * transform.localScale.x;
             jangeki.Param = param;
         }
     }
