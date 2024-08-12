@@ -1,6 +1,6 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
-// à⁄ìÆÅEÉWÉÉÉìÉvíSìñ
+// ÁßªÂãï„Éª„Ç∏„É£„É≥„ÉóÊãÖÂΩì
 
 public class CharacterMovement 
 {
@@ -40,7 +40,7 @@ public class CharacterMovement
         }
     }
 
-    MovementParameter param = new MovementParameter(3.0f, 10.0f);
+    MovementParameter param = new MovementParameter(200.0f, 10.0f);
     Rigidbody2D rigidbody;
     
     public MovementParameter Param
@@ -59,25 +59,25 @@ public class CharacterMovement
     public CharacterMovement(Rigidbody2D rigidbody)
     {
         this.rigidbody = rigidbody;
-        if (!rigidbody)
+        if (rigidbody is null)
         {
-            throw new System.ArgumentNullException("Rigidbody2D is null!");
+            throw new System.ArgumentNullException("CharacterMovement: Rigidbody2D is null!");
         }
     }
 
     public void Move(Vector2 direction)
     {
-        if (!rigidbody) { return; }
+        if (rigidbody is null) { return; }
 
         Vector2 velocity = rigidbody.velocity;
-        velocity.x = direction.x * param.speed;
+        velocity.x = direction.x * param.speed * Time.fixedDeltaTime;
         rigidbody.velocity = velocity;
     }
 
     public void Jump(bool jump)
     {
-        if (!jump) { return; }
-        if (!rigidbody) { return; }
+        if (jump is false) { return; }
+        if (rigidbody is null) { return; }
 
         rigidbody.AddForce(Vector2.up * param.jumpForce, ForceMode2D.Impulse);
     }
